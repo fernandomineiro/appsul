@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Component({
+@Component({ 
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    
+    public router: Router
+  ) {}
 
+  a(){
+    this.router.navigate(['a']);
+  }
 }

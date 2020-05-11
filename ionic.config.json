@@ -1,7 +1,8 @@
 {
   "name": "cadstre",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

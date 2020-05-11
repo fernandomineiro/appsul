@@ -1,0 +1,55 @@
+<ion-content>
+  <img id="a" class="rounded" src="assets/iconeapp.png"><br>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" style="position: relative; width: 80%; left: 10%">
+    <label for="text" style="color: #a0bfff">Nome:</label>
+    <input id="b" formControlName="nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }" type="text" class="form-control" placeholder="Ex: Andreia da Silva" >
+    <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+      <div *ngIf="f.nome.errors.required">Nome é obrigatório</div>
+  </div>
+  </div>
+
+  <div class="form-group" style="position: relative; width: 80%; left: 10%">
+    <label for="text" style="color: #a0bfff">CPF:</label>
+    <input id="b" formControlName="cpf" [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }" type="text"  mask='000.000.000-00' class="form-control" placeholder="Ex: 000.000.000-00" >
+    <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+      <div *ngIf="f.cpf.errors.required">CPF é obrigatório</div>
+  </div>
+  </div>
+
+  <div class="form-group" style="position: relative; width: 80%; left: 10%">
+    <label for="text" style="color: #a0bfff">Data de Nascimento:</label>
+    <input id="b" type="text" formControlName="data" [ngClass]="{ 'is-invalid': submitted && f.data.errors }"  mask='00/00/0000' class="form-control" placeholder="Ex: 09/04/1990" >
+    <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+      <div *ngIf="f.nome.errors.required">Data de Nascimento é obrigatório</div>
+  </div>
+  </div>
+
+  <div class="form-group" style="position: relative; width: 80%; left: 10%">
+    <label for="text" style="color: #a0bfff">Categoria Desejada:</label>
+    <select id="b" class="form-control">
+      <option>AB</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+      <option>D</option>
+      <option>E</option>
+    </select>
+  </div>
+
+  <div classbf="text-center"  style="position: relative; top: 1%; height: 10px;">
+    <div id="i"> <input class="form-check-input" formControlName="aceito" [ngClass]="{ 'is-invalid': submitted && f.aceito.errors }" id="x" type="checkbox"> 
+      <div *ngIf="submitted && f.aceito.errors" class="invalid-feedback">Acordo é obrigatório</div>
+      <p id="p"f> Autorizo acesso o uso dos meus dados para</p></div>
+  <p id="o">validar as informações acima</p>
+  
+  </div>
+
+  <div class="text-center">
+    <button id="t" class="btn">Atendo as condições, quero continuar </button>
+  </div>
+ 
+</form>
+
+
+</ion-content>
