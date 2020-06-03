@@ -4,7 +4,7 @@
 </div> 
   <div class="text-center" >
     <span id="xx">#RG FRENTE E VERSO#
-      #CPF#
+      #CPF# 
       #ASSINATURA EM UM PAPEL BRANCO #
       #FOTO QUE DESEJA COLOCAR NA CNH #
       #ENDEREÇO ATUALIZADO#</span> 
@@ -14,8 +14,36 @@
   ou um livro
 </p></div>
 <div id="c" class="form-group row"><i class="fa fa-check" id="i"></i><p id="m">Coloque o documento sobre essa superfície confira a luz e pronto!</p></div>
-<img>
+<div *ngIf="finalizado">
+<div class="alert alert-primary" role="alert">
+  Inscrição concluída.. 
 
+
+  Vamos analisar sua documentação
+  
+</div>
+<img src="assets/a.jpeg" style="height: 100px; width: 80%;">
+</div>
+<img>
+<div *ngIf="currentImage != 0">
+  <button (click)="readFile()" *ngIf="tuca != 0" type="button"  id="bb" class="btn ">Enviar</button>
+  </div>
+
+
+<ion-fab style="margin-top: -30%; position: absolute;" vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="takePicture()">
+    <ion-icon name="camera"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<div *ngIf="currentImage">
+  <div *ngFor="let item of currentImage">
+  <div><img style="width: 100px; height: 100px;" [src]="item.image"><br>
+    <ion-button color="danger" size="small" (click)="delete(item)">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </div>
+</div>
+</div>
 
 </div>
 </ion-content>

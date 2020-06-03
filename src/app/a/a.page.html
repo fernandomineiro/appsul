@@ -11,7 +11,7 @@
 
   <div class="form-group" style="position: relative; width: 80%; left: 10%">
     <label for="text" style="color: #a0bfff">CPF:</label>
-    <input id="b" formControlName="cpf" [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }" type="text"  mask='000.000.000-00' class="form-control" placeholder="Ex: 000.000.000-00" >
+    <input id="b" formControlName="cpf" [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }" type="text"  mask='000.000.000-00' class="form-control" placeholder="Ex: 000.000.000-00" >
     <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
       <div *ngIf="f.cpf.errors.required">CPF é obrigatório</div>
   </div>
@@ -19,7 +19,7 @@
 
   <div class="form-group" style="position: relative; width: 80%; left: 10%">
     <label for="text" style="color: #a0bfff">Data de Nascimento:</label>
-    <input id="b" type="text" formControlName="data" [ngClass]="{ 'is-invalid': submitted && f.data.errors }"  mask='00/00/0000' class="form-control" placeholder="Ex: 09/04/1990" >
+    <input id="b" type="text" formControlName="data" [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': submitted && f.data.errors }"  mask='00/00/0000' class="form-control" placeholder="Ex: 09/04/1990" >
     <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
       <div *ngIf="f.nome.errors.required">Data de Nascimento é obrigatório</div>
   </div>
@@ -27,16 +27,22 @@
 
   <div class="form-group" style="position: relative; width: 80%; left: 10%">
     <label for="text" style="color: #a0bfff">Categoria Desejada:</label>
-    <select id="b" class="form-control">
-      <option>AB</option>
-      <option>A</option>
-      <option>B</option>
-      <option>C</option>
-      <option>D</option>
-      <option>E</option>
+    <select id="b"  formControlName="categoria" [ngClass]="{ 'is-invalid': submitted && f.categoria.errors }"  class="form-control">
+      <option value="">Selecione...</option>
+      <option value="AB">AB</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <option value="E">E</option>
     </select>
+    <div *ngIf="submitted && f.categoria.errors" class="invalid-feedback">
+      <div *ngIf="f.categoria.errors.required">Categoria é obrigatório</div>
   </div>
-
+  </div>
+  <div style="position: relative; width: 80%; left: 10%" *ngIf="valor" class="alert alert-danger" role="alert">
+    Já possuimos esse CPF no nosso banco de dados!
+  </div>
   <div classbf="text-center"  style="position: relative; top: 1%; height: 10px;">
     <div id="i"> <input class="form-check-input" formControlName="aceito" [ngClass]="{ 'is-invalid': submitted && f.aceito.errors }" id="x" type="checkbox"> 
       <div *ngIf="submitted && f.aceito.errors" class="invalid-feedback">Acordo é obrigatório</div>
@@ -50,6 +56,5 @@
   </div>
  
 </form>
-
 
 </ion-content>
